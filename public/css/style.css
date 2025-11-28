@@ -1,0 +1,100 @@
+body,
+html {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-image: url("../img/fondo3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+}
+
+/* Navbar */
+nav {
+  background-color: rgba(64, 142, 165, 0.5);
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 35px;
+  height: 65px; /* Ajusta el alto del nav */
+}
+
+.logoCera {
+  height: 50px;
+}
+
+/* Texto general */
+body {
+  font-family: fantasy;
+  background-color: whitesmoke;
+  padding-bottom: 60px; /* deja espacio para el footer fijo */
+}
+
+/* Formularios */
+form {
+  font-size: 18px;
+}
+
+/* Contacto */
+.contact-form {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 30px;
+  color: wheat;
+  margin-top: 30px;
+}
+
+/* Footer fijo */
+footer {
+  width: 100%;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 20px;
+  background-color: rgba(64, 142, 165, 0.5);
+  padding: 10px 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Tabla con scroll */
+.table-container {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Estilos para impresión */
+@media print {
+  .nav, .footer, #searchInput, .btn {
+      display: none !important;
+  }
+
+  .table, h3.bg-primary {
+      display: block !important;
+  }
+
+  body {
+      margin: 0;
+      padding: 10px;
+  }
+
+  .table {
+      width: 100%;
+      border: 1px solid black;
+  }
+
+  .table th, .table td {
+      border: 1px solid black;
+  }
+}
