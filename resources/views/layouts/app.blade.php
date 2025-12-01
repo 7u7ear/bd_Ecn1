@@ -10,13 +10,13 @@
     <!-- Tu CSS personalizado -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-    <title>bd_ecn1</title>
+    <title>@yield('title', 'bd_ecn1')</title>
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">bd_ecn1</a>
+            <a class="navbar-brand" href="{{ url('/') }}">Esea en Cerámica Nª1</a>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="{{ route('alumnos.index') }}">Alumnos</a></li>
             </ul>
@@ -30,7 +30,7 @@
 
     <!-- Footer fijo -->
     <footer>
-        © 2025 Escuela Superior de Enseñanza Artística de Cerámica Nº1. Bulnes 45, CABA.
+        © 2026 Escuela Superior de Enseñanza Artística de Cerámica Nº1. Bulnes 45, CABA.
     </footer>
 
     <!-- Bootstrap JS -->

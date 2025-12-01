@@ -1,22 +1,29 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@extends('layouts.app')
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+@section('title', 'Inicio')
 
-    <!-- Tu CSS personalizado -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+@section('content')
+    <div class="text-center">
+        <h1>Bienvenido al sistema bd_ecn1</h1>
+        <p>Este es tu punto de inicio. Desde aquí podés navegar a las secciones principales del sistema.</p>
 
-    <title>@yield('title', 'bd_ecn1')</title>
-</head>
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <a href="{{ route('alumnos.index') }}" class="btn btn-primary mt-3">
+            📘 Listado de Alumnos
+        </a>
+    </div>
+@endsection
+
+@section('content')
+    <div class="text-center">
+        <h1>Bienvenido al sistema bd_ecn1</h1>
+        <p>Este es tu punto de inicio. Desde aquí podés navegar a las secciones principales del sistema.</p>
+
+        <a href="{{ route('alumnos.index') }}" class="btn btn-primary mt-3">
+            📘 Listado de Alumnos
+        </a>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Esea en Cerámica N°1</a>
+    <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -50,19 +57,4 @@
     </div>
   </div>
 </nav>
-
-
-    <!-- Contenido dinámico -->
-    <main class="container py-4">
-        @yield('content')
-    </main>
-
-    <!-- Footer fijo -->
-    <footer class="text-center py-3 bg-light">
-        © 2026 Escuela Superior de Enseñanza Artística de Cerámica Nº1. Bulnes 45, CABA.
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    </div>

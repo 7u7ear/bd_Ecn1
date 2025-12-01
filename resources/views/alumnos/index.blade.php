@@ -1,40 +1,36 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>Lista de Alumnos</h2>
-    <a href="{{ route('alumnos.create') }}" class="btn btn-primary">Nuevo Alumno</a>
-</div>
+    <div class="d-flex align-items-center justify-content-between mb-3">
+        <h1 class="h3 mb-0">Listado de Alumnos</h1>
+        <a href="#" class="btn btn-primary">Nuevo alumno</a>
+    </div>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Apellido</th>
-            <th>Nombre</th>
-            <th>DNI</th>
-            <th>Email</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @forelse($alumnos as $alumno)
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td>{{ $alumno->apellido }}</td>
-                <td>{{ $alumno->nombre }}</td>
-                <td>{{ $alumno->dni }}</td>
-                <td>{{ $alumno->email }}</td>
+                <th>Nombre</th>
+                <th>Curso</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Juan Pérez</td>
+                <td>1º A</td>
                 <td>
-                    <a href="{{ route('alumnos.edit', $alumno) }}" class="btn btn-sm btn-warning">Editar</a>
-                    <form action="{{ route('alumnos.destroy', $alumno) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-sm btn-danger" onclick="return confirm('¿Seguro?')">Eliminar</button>
-                    </form>
+                    <button class="btn btn-sm btn-info">Ver</button>
+                    <button class="btn btn-sm btn-warning">Editar</button>
                 </td>
             </tr>
-        @empty
-            <tr><td colspan="5">No hay alumnos cargados.</td></tr>
-        @endforelse
-    </tbody>
-</table>
+            <tr>
+                <td>María López</td>
+                <td>2º B</td>
+                <td>
+                    <button class="btn btn-sm btn-info">Ver</button>
+                    <button class="btn btn-sm btn-warning">Editar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 @endsection
