@@ -1,13 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AlumnoController;
+
+// Ruta de inicio
 Route::get('/', function () {
     return view('inicio');
 })->name('inicio');
 
-use App\Http\Controllers\AlumnoController;
-
+// Recurso alumnos
 Route::resource('alumnos', AlumnoController::class);
-
-
-use Illuminate\Support\Facades\Route;
-
