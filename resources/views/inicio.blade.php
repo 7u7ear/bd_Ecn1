@@ -8,8 +8,10 @@
         <p>Este es tu punto de inicio. Desde aquí podés navegar a las secciones principales del sistema.</p>
 
         <a href="{{ route('alumnos.index') }}" class="btn btn-primary mt-3">
-            📘 Listado de Alumnos
+            📘  Alumnos
         </a>
+        <a href="{{ route('docentes.index') }}" class="btn btn-secondary mt-3">
+            📗  Docentes
     </div>
 @endsection
 

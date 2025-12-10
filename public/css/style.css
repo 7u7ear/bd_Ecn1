@@ -1,13 +1,17 @@
-body,
-html {
+/* Reset básico */
+html, body {
   width: 100%;
   margin: 0;
   padding: 0;
-  height: 100vh;
+  min-height: 100vh;
   background-image: url("../img/fondo3.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  font-family: 'Segoe UI', Arial, sans-serif; /* fuente clara y moderna */
+  font-weight: 400; /* texto normal */
+  color: #212529; /* gris oscuro para legibilidad */
+  padding-bottom: 60px; /* espacio para footer fijo */
 }
 
 /* Ajustes responsive */
@@ -19,34 +23,40 @@ html {
 
 /* Navbar */
 nav {
-  background-color: rgba(64, 142, 165, 0.5);
+  background-color: rgba(64, 142, 165, 0.85);
   text-align: center;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 35px;
-  height: 65px; /* Ajusta el alto del nav */
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 18px;
+  height: 65px;
 }
 
-.logoCera {
+.navbar-brand img {
   height: 50px;
 }
 
-/* Texto general */
-body {
-  font-family: fantasy;
-  background-color: whitesmoke;
-  padding-bottom: 60px; /* deja espacio para el footer fijo */
+.nav-link {
+  font-weight: 400 !important;
 }
 
 /* Formularios */
 form {
-  font-size: 18px;
+  font-size: 16px;
+}
+
+form label {
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+form input, form button {
+  margin-bottom: 10px;
 }
 
 /* Contacto */
 .contact-form {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 30px;
-  color: wheat;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 18px;
+  color: #333;
   margin-top: 30px;
 }
 
@@ -54,9 +64,10 @@ form {
 footer {
   width: 100%;
   text-align: center;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 20px;
-  background-color: rgba(64, 142, 165, 0.5);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 14px;
+  background-color: rgba(64, 142, 165, 0.85);
+  color: #fff;
   padding: 10px 0;
   position: fixed;
   left: 0;
@@ -74,9 +85,23 @@ footer {
   overflow-y: auto;
 }
 
+.table {
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.table th {
+  font-weight: 600;
+}
+
+.table td {
+  font-weight: 400;
+}
+
 /* Estilos para impresión */
 @media print {
-  .nav, .footer, #searchInput, .btn {
+  nav, footer, #searchInput, .btn {
       display: none !important;
   }
 
@@ -87,6 +112,8 @@ footer {
   body {
       margin: 0;
       padding: 10px;
+      background: #fff !important;
+      color: #000 !important;
   }
 
   .table {

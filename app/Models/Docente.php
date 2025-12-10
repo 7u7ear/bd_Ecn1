@@ -14,10 +14,18 @@ class Docente extends Model
         'rrhh_id',
         'nombre',
         'apellido',
+        'fechaNac',
         'dni',
-        'email'
+        'cuil',
+        'fichaCensal',
+        'email',
     ];
 
+    protected $casts = [
+        'fechaNac' => 'date', // convierte automáticamente a Carbon
+    ];
+
+    // Relaciones
     public function cargos()
     {
         return $this->hasMany(Cargo::class);
