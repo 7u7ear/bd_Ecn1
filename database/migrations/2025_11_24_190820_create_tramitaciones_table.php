@@ -6,51 +6,45 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
     public function up(): void
-    {
-        Schema::create('tramitaciones', function (Blueprint $table) {
-            $table->id();
+{
+    Schema::create('tramitaciones', function (Blueprint $table) {
+    $table->id();
 
-            // Número de expediente oficial
-            $table->string('expediente')->unique();
+    // Fecha del trámite
+    $table->date('fecha');
 
-            // Fecha del movimiento
-            $table->date('fecha');
+    // Estado administrativo general
+    $table->enum('estado', [
+        'urgente',
+        'realizado',
+        'en_tramitacion',
+        'espera_documentacion',
+        'caratulado',
+        'a_la_guarda'
+    ])->default('en_tramitacion');
 
-            // Tipo de movimiento: Alta, Baja, Modificación
-            $table->enum('abm', ['alta', 'baja', 'modificacion']);
+    // 👉 Movimiento real del cargo
+    $table->foreignId('cargo_docente_id')
+          ->constrained('cargo_docente');
 
-            // Relación con cargo
-            $table->foreignId('cargo_id')->constrained('cargos');
+    // Tipo de trámite
+    $table->enum('abm', ['alta', 'baja', 'modificacion']);
 
-            // Relación con docente
-            $table->foreignId('docente_id')->constrained('docentes');
+    // Datos administrativos
+    $table->string('expediente')->unique();
+    $table->foreignId('codigo_tramite_id')->constrained('codigo_tramites');
 
-            // Detalle del trámite
-            $table->string('tramite');
-            $table->string('anio');
-            $table->string('division');
-            $table->string('turno');
 
-            // Observaciones
-            $table->text('observaciones')->nullable();
+    $table->foreignId('causal_id')->nullable()->constrained('causales');
 
-            // Estado del trámite
-            $table->enum('estado', [
-                'urgente',
-                'realizado',
-                'en_tramitacion',
-                'listo',
-                'espera_documentacion',
-                'caratulado',
-                'a_la_guarda'
-            ])->default('en_tramitacion');
+    $table->text('observaciones')->nullable();
 
-            $table->timestamps();
-            $table->softDeletes(); // opcional, si querés mantener historial de trámites eliminados
+    $table->timestamps();
+    $table->softDeletes();
+});
 
-        });
-    }
 
+}
     public function down(): void
     {
         Schema::dropIfExists('tramitaciones');

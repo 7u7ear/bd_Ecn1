@@ -4,15 +4,16 @@
 
 @section('content')
     <div class="text-center">
-        <h1>Bienvenido al sistema bd_ecn1</h1>
-        <p>Este es tu punto de inicio. Desde aquí podés navegar a las secciones principales del sistema.</p>
+        <h4>Bienvenido al sistema bd_ecn1</h4>
+        <p>Este es tu punto de inicio.</p>
 
         <a href="{{ route('alumnos.index') }}" class="btn btn-primary mt-3">
             📘  Alumnos
-        </a>
-        <a href="{{ route('docentes.index') }}" class="btn btn-secondary mt-3">
-            📗  Docentes
-    </div>
+        </a>&nbsp; &nbsp;&nbsp; &nbsp;<a href="{{ route('docentes.index') }}" class="btn btn-primary mt-3 docentes-btn">
+    🎓 Docentes
+</a>
+
+                       </div>
 @endsection
 
 

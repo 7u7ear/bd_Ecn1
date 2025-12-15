@@ -2,40 +2,91 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Tramitacion extends Model
 {
-    use HasFactory, SoftDeletes; // opcional, si querés poder restaurar trámites eliminados
+    use SoftDeletes;
 
-    // Forzar el nombre correcto de la tabla (evita "tramitacions")
+    // 🔹 Tabla real (español)
     protected $table = 'tramitaciones';
 
+    // 🔹 Campos editables
     protected $fillable = [
-        'expediente',
         'fecha',
+        'estado',
+        'cargo_docente_id',
+        'codigo_tramite_id',
         'abm',
-        'cargo_id',
-        'docente_id',
-        'tramite',
-        'anio',
-        'division',
-        'turno',
+        'expediente',
+        'causal_id',
         'observaciones',
-        'estado'
     ];
 
-    // Relación con cargo
-    public function cargo()
+    // 🔹 Casts
+    protected $casts = [
+        'fecha' => 'date',
+    ];
+
+    /*
+    |--------------------------------------------------------------------------
+    | RELACIONES
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * Movimiento de cargo (docente + cargo + rol)
+     */
+    public function cargoDocente()
+{
+    return $this->belongsTo(CargoDocente::class);
+}
+
+    /**
+     * Código oficial de trámite (212P, etc.)
+     */
+    public function codigoTramite()
     {
-        return $this->belongsTo(Cargo::class);
+        return $this->belongsTo(CodigoTramite::class);
     }
 
-    // Relación con docente
-    public function docente()
+    /**
+     * Causal (licencia, renuncia, etc.)
+     */
+    public function causal()
+{
+    return $this->belongsTo(Causal::class);
+}
+    /**
+     * Historial de estados (activo, licencia, finalizado)
+     */
+    public function periodos()
     {
-        return $this->belongsTo(Docente::class);
+        return $this->hasMany(TramitacionPeriodo::class);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | HELPERS (opcional, pero útil)
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * Estado actual según el último período
+     */
+    public function estadoActual()
+    {
+        return $this->periodos()
+            ->orderByDesc('fecha_inicio')
+            ->first();
+    }
+
+    /**
+     * Saber si está cerrada
+     */
+    public function estaCerrada(): bool
+    {
+        return in_array($this->estado, ['realizado', 'a_la_guarda']);
     }
 }

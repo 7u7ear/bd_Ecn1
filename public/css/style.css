@@ -10,7 +10,7 @@ html, body {
   background-attachment: fixed;
   font-family: 'Segoe UI', Arial, sans-serif; /* fuente clara y moderna */
   font-weight: 400; /* texto normal */
-  color: #212529; /* gris oscuro para legibilidad */
+  color: rgba(219, 153, 54, 0.959); /* gris oscuro para legibilidad */
   padding-bottom: 60px; /* espacio para footer fijo */
 }
 
@@ -24,6 +24,7 @@ html, body {
 /* Navbar */
 nav {
   background-color: rgba(64, 142, 165, 0.85);
+  color: #fff;
   text-align: center;
   font-family: 'Segoe UI', Arial, sans-serif;
   font-size: 18px;
@@ -49,7 +50,7 @@ form label {
 }
 
 form input, form button {
-  margin-bottom: 10px;
+  margin-bottom: 0%;
 }
 
 /* Contacto */
@@ -124,4 +125,23 @@ footer {
   .table th, .table td {
       border: 1px solid black;
   }
+}
+
+td form {
+    display: inline-block;
+    margin: 0;
+}
+td form button {
+    vertical-align: middle;
+}
+
+/* Limpieza visual general */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li::marker {
+    display: none;
 }

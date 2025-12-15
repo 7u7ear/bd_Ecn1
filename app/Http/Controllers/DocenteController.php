@@ -38,6 +38,7 @@ class DocenteController extends Controller
             'cuil'        => 'required|unique:docentes',
             'fichaCensal' => 'required|unique:docentes',
             'email'       => 'nullable|email|unique:docentes',
+            'telefono'    => 'nullable|string|max:20',
         ]);
 
         Docente::create($validated);
@@ -64,18 +65,20 @@ class DocenteController extends Controller
     /**
      * Actualizar un docente
      */
-    public function update(Request $request, Docente $docente)
-    {
-        $validated = $request->validate([
-            'rrhh_id'     => 'required|unique:docentes,rrhh_id,' . $docente->id,
-            'nombre'      => 'required|string|max:255',
-            'apellido'    => 'required|string|max:255',
-            'fechaNac'    => 'required|date',
-            'dni'         => 'required|unique:docentes,dni,' . $docente->id,
-            'cuil'        => 'required|unique:docentes,cuil,' . $docente->id,
-            'fichaCensal' => 'required|unique:docentes,fichaCensal,' . $docente->id,
-            'email'       => 'nullable|email|unique:docentes,email,' . $docente->id,
-        ]);
+public function update(Request $request, Docente $docente)
+{
+    $validated = $request->validate([
+        'rrhh_id'     => 'required|unique:docentes,rrhh_id,' . $docente->id,
+        'nombre'      => 'required|string|max:255',
+        'apellido'    => 'required|string|max:255',
+        'fechaNac'    => 'required|date',
+        'dni'         => 'required|unique:docentes,dni,' . $docente->id,
+        'cuil'        => 'required|digits_between:10,12|unique:docentes,cuil,' . $docente->id,
+        'fichaCensal' => 'required|unique:docentes,fichaCensal,' . $docente->id,
+        'email'       => 'nullable|email|unique:docentes,email,' . $docente->id,
+        'telefono'    => 'nullable|string|max:20',
+    ]);
+
 
         $docente->update($validated);
 

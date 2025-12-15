@@ -21,6 +21,7 @@ return new class extends Migration
         $table->string('cuil')->unique();
         $table->string('fichaCensal')->unique();
         $table->string('email')->nullable()->unique();
+        $table->string('telefono')->nullable();
         $table->timestamps();
         $table->softDeletes(); // agrega columna deleted_at
     });

@@ -19,6 +19,7 @@ class Docente extends Model
         'cuil',
         'fichaCensal',
         'email',
+        'telefono',
     ];
 
     protected $casts = [
@@ -31,6 +32,11 @@ class Docente extends Model
         return $this->hasMany(Cargo::class);
     }
 
+    public function store(Request $request)
+{
+    Docente::create($request->all());
+}
+
     public function tramitaciones()
     {
         return $this->hasMany(Tramitacion::class);
@@ -40,4 +46,5 @@ class Docente extends Model
     {
         return $this->hasMany(SituacionRevista::class);
     }
+
 }

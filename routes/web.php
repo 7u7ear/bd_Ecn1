@@ -1,15 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\DocenteController;
 
-// Ruta de inicio
+// Inicio
 Route::get('/', function () {
     return view('inicio');
 })->name('inicio');
 
-// Rutas adicionales para soft deletes (PRIMERO)
+// Docentes – soft delete
 Route::get('/docentes/trash', [DocenteController::class, 'trash'])
      ->name('docentes.trash');
 
@@ -19,5 +18,10 @@ Route::post('/docentes/{id}/restore', [DocenteController::class, 'restore'])
 Route::delete('/docentes/{id}/forceDelete', [DocenteController::class, 'forceDelete'])
      ->name('docentes.forceDelete');
 
-// CRUD de docentes (DESPUÉS)
+// CRUD docentes
 Route::resource('docentes', DocenteController::class);
+
+// Tramitaciones (archivo separado)
+require __DIR__.'/tramitaciones.php';
+
+

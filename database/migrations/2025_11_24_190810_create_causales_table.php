@@ -15,6 +15,7 @@ return new class extends Migration
         $table->id();
         $table->string('nombre');                // licencia, enfermedad, reemplazo...
         $table->text('descripcion')->nullable(); // opcional
+        $table->softDeletes();
         $table->timestamps();
     });
 }

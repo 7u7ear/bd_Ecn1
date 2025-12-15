@@ -2,22 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Causal extends Model
 {
-    use HasFactory;
+    use SoftDeletes;
 
-    // Campos que se pueden asignar masivamente
+    protected $table = 'causales'; // 👈 CLAVE
+
     protected $fillable = [
-        'nombre',        // Ejemplo: "Licencia", "Enfermedad", "Reemplazo"
-        'descripcion'    // Texto más detallado del motivo
+        'nombre',
     ];
 
-    // Relación con situaciones de revista
-    public function situacionesRevista()
+    // Relaciones
+    public function tramitaciones()
     {
-        return $this->hasMany(SituacionRevista::class);
+        return $this->hasMany(Tramitacion::class);
     }
 }
+

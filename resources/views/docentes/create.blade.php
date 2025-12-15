@@ -1,43 +1,82 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
-    <div class="container-fluid">
+@extends('layouts.app')
 
-        <a class="navbar-brand" href="{{ route('inicio') }}">
-            <img src="/img/logo.png" alt="Logo" width="30">
-        </a>
+@section('title', 'Crear Docente')
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarNav" aria-controls="navbarNav"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+@section('content')
+    <div class="card shadow mt-4">
+        <div class="card-header bg-primary text-white">
+            <h2>Nuevo Docente</h2>
+        </div>
+        <div class="card-body">
+            {{-- Mostrar errores de validación --}}
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <strong>Ups!</strong> Hubo algunos problemas con tus datos.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-        <div class="collapse navbar-collapse" id="navbarNav">
+            {{-- Formulario --}}
+            <form action="{{ route('docentes.store') }}" method="POST">
+                @csrf
 
-            {{-- Izquierda --}}
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('inicio') }}">Inicio</a>
-                </li>
+                <div class="mb-3">
+                    <label for="rrhh_id" class="form-label">ID RRHH</label>
+                    <input type="text" name="rrhh_id" class="form-control" value="{{ old('rrhh_id') }}" required>
+                </div>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('docentes.index') }}">Docentes</a>
-                </li>
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" name="nombre" class="form-control" value="{{ old('nombre') }}" required>
+                </div>
 
-                <li class="nav-item">
-                    <a class="nav-link text-warning" href="{{ route('docentes.trash') }}">
-                        Docentes Eliminados
-                    </a>
-                </li>
-            </ul>
+                <div class="mb-3">
+                    <label for="apellido" class="form-label">Apellido</label>
+                    <input type="text" name="apellido" class="form-control" value="{{ old('apellido') }}" required>
+                </div>
 
-            {{-- Derecha: Buscador --}}
-            <form class="d-flex" method="GET" action="{{ route('docentes.index') }}">
-                <input class="form-control me-2" type="search"
-                       name="search" placeholder="Buscar docente..."
-                       value="{{ request('search') }}">
-                <button class="btn btn-outline-light" type="submit">Buscar</button>
+                <div class="mb-3">
+                    <label for="fechaNac" class="form-label">Fecha de Nacimiento</label>
+                    <input type="date" name="fechaNac" class="form-control" value="{{ old('fechaNac') }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="dni" class="form-label">DNI</label>
+                    <input type="text" name="dni" class="form-control" value="{{ old('dni') }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="cuil" class="form-label">CUIL</label>
+                    <input type="text" name="cuil" class="form-control" value="{{ old('cuil') }}" required>
+                    <small class="text-muted">
+                        Ingresar solo números, sin guiones.
+                    </small>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="fichaCensal" class="form-label">Ficha Censal</label>
+                    <input type="text" name="fichaCensal" class="form-control" value="{{ old('fichaCensal') }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo electrónico</label>
+                    <input type="email" name="email" class="form-control" value="{{ old('email') }}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono</label>
+                    <input type="text" name="telefono" class="form-control" value="{{ old('telefono') }}">
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                    <a href="{{ route('docentes.index') }}" class="btn btn-danger">Cancelar</a>
+                </div>
             </form>
-
         </div>
     </div>
-</nav>
+@endsection
