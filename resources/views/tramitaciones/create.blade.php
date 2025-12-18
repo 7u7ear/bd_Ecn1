@@ -49,7 +49,7 @@
     <select name="cargo_docente_id" class="form-select" required>
         @foreach($cargosDocentes as $cd)
             <option value="{{ $cd->id }}"
-                {{ old('cargo_docente_id', $tramitacion->cargo_docente_id) == $cd->id ? 'selected' : '' }}>
+                {{ old('cargo_docente_id') == $cd->id ? 'selected' : '' }}>
 
                 {{ $cd->docente->apellido }}, {{ $cd->docente->nombre }}
                 — Puesto {{ $cd->cargo->numero_puesto }}

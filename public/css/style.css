@@ -22,9 +22,11 @@ html, body {
 }
 
 /* Navbar */
+.bg-body-tertiary {
+  background-color:   rgba(64, 142, 165, 0.85) !important;
+}
 nav {
-  background-color: rgba(64, 142, 165, 0.85);
-  color: #fff;
+  color: #12db3e;
   text-align: center;
   font-family: 'Segoe UI', Arial, sans-serif;
   font-size: 18px;
